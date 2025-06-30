@@ -1,22 +1,38 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<link rel="stylesheet" href="/src/styles/global.css">
 	</head>
 	<body>
-		<slot />
+		<header>
+			<h1><a href="/">野鳥紹介サイト</a></h1>
+			<nav>
+				<ul>
+					<li><a href="/zukan">野鳥図鑑</a></li>
+					<li><a href="/beginner">バードウォッチング入門</a></li>
+					<li><a href="/blog">ブログ</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<slot />
+		</main>
+		<footer>
+			<p>&copy; 2025 野鳥紹介サイト</p>
+		</footer>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

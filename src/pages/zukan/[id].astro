@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const birds = [
+  { id: '1', name: 'スズメ', description: '人家の近くでよく見られる、最も身近な鳥の一つ。', img: '/images/placeholder.svg' },
+  { id: '2', name: 'メジロ', description: '目の周りの白い輪が特徴。花の蜜を好む。', img: '/images/placeholder.svg' },
+  { id: '3', name: 'シジュウカラ', description: 'ネクタイのような黒い模様が特徴の、賢い鳥。', img: '/images/placeholder.svg' },
+];
+
+export function getStaticPaths() {
+  return birds.map(bird => ({
+    params: { id: bird.id },
+    props: { bird },
+  }));
+}
+
+const { bird } = Astro.props;
+---
+
+<Layout title={bird.name}>
+  <div class="bird-detail">
+    <img src={bird.img} alt={bird.name} width="400" height="300" />
+    <div class="info">
+      <h2>{bird.name}</h2>
+      <p>{bird.description}</p>
+      <!-- ここに将来、詳細情報を追加 -->
+    </div>
+  </div>
+  <a href="/zukan">図鑑にもどる</a>
+</Layout>
+
+<style>
+  .bird-detail {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+  .bird-detail img {
+    max-width: 400px;
+    border-radius: 8px;
+  }
+</style>

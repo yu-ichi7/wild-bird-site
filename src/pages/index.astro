@@ -1,11 +1,44 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="ようこそ！野鳥紹介サイトへ">
+	<div class="hero">
+		<img src="/images/placeholder.svg" alt="美しい野鳥" width="1200" height="400" />
+		<div class="hero-text">
+			<h2>あなたの身近にいる、<br>美しい隣人たちを見つけに行こう</h2>
+		</div>
+	</div>
+
+	<div class="intro">
+		<p>このサイトは、私たちの周りにいる野鳥たちの魅力的な世界を紹介するウェブサイトです。</p>
+		<p>図鑑で鳥の種類を調べたり、バードウォッチングの基本を学んだり。さあ、一緒に野鳥の世界を覗いてみましょう。</p>
+	</div>
+
+	<h3>主なコンテンツ</h3>
+	<div class="contents-grid">
+		<a href="/zukan" class="card">
+			<h4>野鳥図鑑</h4>
+			<p>身近な鳥から珍しい鳥まで、写真や鳴き声で紹介します。</p>
+		</a>
+		<a href="/beginner" class="card">
+			<h4>バードウォッチング入門</h4>
+			<p>初心者でも安心！観察のコツやマナーを解説します。</p>
+		</a>
+		<a href="/blog" class="card">
+			<h4>ブログ</h4>
+			<p>季節の野鳥情報や、観察レポートをお届けします。</p>
+		</a>
+	</div>
 </Layout>
+
+<style>
+	.hero { position: relative; margin-bottom: 2rem; }
+	.hero img { width: 100%; height: auto; border-radius: 8px; }
+	.hero-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; text-align: center; background: rgba(0,0,0,0.4); padding: 1.5rem; border-radius: 8px; }
+	.intro { text-align: center; margin-bottom: 3rem; font-size: 1.1rem; }
+	.contents-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+	.card { display: block; background: #fff; padding: 1.5rem; border-radius: 8px; text-decoration: none; color: #333; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.2s; }
+	.card:hover { transform: translateY(-5px); }
+	.card h4 { margin-top: 0; color: #2c5242; }
+</style>

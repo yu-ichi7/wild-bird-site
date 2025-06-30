@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const birds = [
+  { id: 1, name: 'スズメ', description: '人家の近くでよく見られる、最も身近な鳥の一つ。', img: '/images/placeholder.svg' },
+  { id: 2, name: 'メジロ', description: '目の周りの白い輪が特徴。花の蜜を好む。', img: '/images/placeholder.svg' },
+  { id: 3, name: 'シジュウカラ', description: 'ネクタイのような黒い模様が特徴の、賢い鳥。', img: '/images/placeholder.svg' },
+];
+---
+
+<Layout title="野鳥図鑑">
+	<h2>野鳥図鑑</h2>
+	<p>身近に見られる野鳥たちを紹介します。</p>
+	
+	<div class="bird-list">
+		{birds.map(bird => (
+			<a href={`/zukan/${bird.id}`} class="bird-card">
+				<img src={bird.img} alt={bird.name} width="400" height="300" />
+				<div class="card-content">
+					<h3>{bird.name}</h3>
+					<p>{bird.description}</p>
+				</div>
+			</a>
+		))}
+	</div>
+</Layout>
+
+<style>
+	.bird-list {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 1.5rem;
+	}
+	.bird-card {
+		display: block;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		background: #fff;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+		text-decoration: none;
+		color: #333;
+		overflow: hidden; /* 画像の角を丸めるため */
+		transition: transform 0.2s;
+	}
+	.bird-card:hover { 
+		transform: translateY(-5px); 
+	}
+	.bird-card img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+	.card-content {
+		padding: 1.5rem;
+	}
+</style>
